@@ -11,6 +11,9 @@ class Game extends Phaser.Scene {
   preload() {
     this.load.image("field", "assets/background/grass.png");
     this.load.audio('bgm', ['assets/sounds/bgm-theme.mp3'])
+    this.load.audio('start-game', ['assets/sounds/start-game.mp3'])
+    this.load.audio('ooh', ['assets/sounds/ooh.mp3'])
+    this.load.audio('cheerup', ['assets/sounds/win-cheer-soccer.mp3'])
     this.load.spritesheet("neymar", "assets/sprites/neymar.png", {
       frameWidth: 90,
       frameHeight: 30
@@ -38,10 +41,16 @@ class Game extends Phaser.Scene {
       }
     };
     this.music = this.sound.add('bgm');
+    this.ooh = this.sound.add('ooh')
+    this.startEffectSound = this.sound.add('start-game')
+    this.cheerup = this.sound.add('cheerup')
+
     this.music.addMarker(loopMarker)
     this.music.play('loop', {
-      delay: 0,
+      delay: 3,
     });
+    this.cheerup.play()
+    this.startEffectSound.play()
 
     this.anims.create({
       key: "up",
@@ -88,7 +97,9 @@ class Game extends Phaser.Scene {
       this.physics.add.overlap(this.neymar, enemy, () => {
         enemy.setVelocityX(Phaser.Math.RND.integerInRange(0, 1000));
         enemy.setVelocityY(Phaser.Math.RND.integerInRange(-1000, 1000));
+        this.ooh.play()
         if (this.colliding) return;
+
         this.colliding = true;
         this.lives -= 1
         this.liveBoard.setText(`LIVES: ${parseInt((this.lives))}`);
