@@ -16,8 +16,8 @@ class Over extends Phaser.Scene {
     this.key_enter = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.ENTER
     );
-
-    dbRef.child("staging").set(parseInt(scores));
+    const player = localStorage.getItem("player");
+    dbRef.child(player).set(parseInt(scores));
   }
 
   update() {
