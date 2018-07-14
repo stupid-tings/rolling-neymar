@@ -48,7 +48,7 @@ class Menu extends Phaser.Scene {
     }
     for (let i = 65; i >= 65 && i <= 90; i++) {
       const key = this.input.keyboard.addKey(i);
-      if (key.isDown) {
+      if (!this.player && key.isDown) {
         if (this.input_name.length <= 24) {
           this.input_name.length && this.player_name.destroy();
           this.input_name.push(i);
