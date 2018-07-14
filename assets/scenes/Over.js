@@ -5,7 +5,7 @@ class Over extends Phaser.Scene {
     });
   }
   preload() {
-    this.load.image("red", "assets/particles/red.png");
+    this.load.audio('cry', 'assets/sounds/cry.mp3')
     this.load.image("over_bg", "assets/background/over.jpg");
   }
 
@@ -29,6 +29,8 @@ class Over extends Phaser.Scene {
     this.key_enter = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.ENTER
     );
+    this.cry = this.sound.add('cry')
+    this.cry.play()
     const player = localStorage.getItem("player");
     dbRef.child(player).set(parseInt(scores));
   }
