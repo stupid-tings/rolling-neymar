@@ -10,6 +10,7 @@ class Game extends Phaser.Scene {
   }
   preload() {
     this.load.image("field", "assets/background/grass.png");
+    this.load.audio('bgm', ['assets/sounds/bgm-theme.mp3'])
     this.load.spritesheet("neymar", "assets/sprites/neymar.png", {
       frameWidth: 90,
       frameHeight: 30
@@ -27,6 +28,20 @@ class Game extends Phaser.Scene {
     this.neymar = this.physics.add.sprite(100, 450, "neymar");
     this.neymar.setBounce(0.2);
     this.neymar.setCollideWorldBounds(true);
+
+    const loopMarker = {
+      name: 'loop',
+      start: 0.4,
+      duration: 7.9,
+      config: {
+        loop: true
+      }
+    };
+    this.music = this.sound.add('bgm');
+    this.music.addMarker(loopMarker)
+    this.music.play('loop', {
+      delay: 0,
+    });
 
     this.anims.create({
       key: "up",
@@ -83,6 +98,7 @@ class Game extends Phaser.Scene {
           this.neymar.x = 100;
           this.neymar.y = 450;
           localStorage.setItem("scores", parseInt(this.score));
+          this.music.stop()
           this.scene.start("Over");
         }
         setTimeout(() => {
@@ -123,6 +139,9 @@ class Game extends Phaser.Scene {
     // if (this.key_enter.isDown) {
     //   this.spawnEnemy()
     // }
+  }
+  destroy() {
+    console.log('DESTroy')
   }
 }
 
