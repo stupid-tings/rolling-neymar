@@ -2,6 +2,21 @@
 <html>
 
 <head>
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCbKQgZPOd-HTqkQpiStcbs1bhZDLkOHHA",
+      authDomain: "bkk-stupid-hack.firebaseapp.com",
+      databaseURL: "https://bkk-stupid-hack.firebaseio.com",
+      projectId: "bkk-stupid-hack",
+      storageBucket: "bkk-stupid-hack.appspot.com",
+      messagingSenderId: "300833271046"
+    };
+    firebase.initializeApp(config);
+
+    window.dbRef = firebase.database().ref('rolling-neymar')
+  </script>
   <script src="/assets/phaser.js"></script>
 
   <script src="/assets/scenes/Over.js"></script>
