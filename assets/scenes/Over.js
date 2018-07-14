@@ -23,6 +23,7 @@ class Over extends Phaser.Scene {
   update() {
     if (this.key_enter.isDown) {
       this.scene.start("Menu");
+      this.key_enter.isDown = false;
     }
   }
 }

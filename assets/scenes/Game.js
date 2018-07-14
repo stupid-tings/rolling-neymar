@@ -77,6 +77,8 @@ class Game extends Phaser.Scene {
         if (this.lives <= 0) {
           clearInterval(this.interval);
           this.neymar.setVelocityY(0);
+          this.neymar.x = 100;
+          this.neymar.y = 450;
           localStorage.setItem("scores", parseInt(this.score));
           this.scene.start("Over");
         }
