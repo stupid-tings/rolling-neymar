@@ -5,13 +5,15 @@ class Menu extends Phaser.Scene {
     });
   }
   preload() {
-    this.load.image("red", "assets/particles/red.png");
+    this.load.image("button", "assets/sprites/button.png");
     this.load.image("background", "assets/background/start.jpg");
   }
 
   create() {
+    const width = window.outerWidth;
+    const height = window.outerHeight;
     const player = localStorage.getItem("player");
-    this.add.image(window.outerWidth / 2, window.outerHeight / 2, "background");
+    this.add.image(width / 2, height / 2, "background");
     this.key_enter = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.ENTER
     );
@@ -27,6 +29,15 @@ class Menu extends Phaser.Scene {
       }
     });
     this.input_name = [];
+    console.log(this.add);
+    const button = this.add.sprite(width / 2, height - 200, "button");
+    button.setInteractive();
+    button.on("pointerdown", () => {
+      if (this.player) {
+        this.scene.start("Game");
+        this.key_enter.isDown = false;
+      }
+    });
   }
 
   update(delta) {
@@ -65,14 +76,9 @@ class Menu extends Phaser.Scene {
       }
     }
     if (this.key_enter.isDown) {
-      if (this.player) {
-        this.scene.start("Game");
-        this.key_enter.isDown = false;
-      } else {
-        if (this.input_name.length) {
-          this.player = String.fromCharCode.apply(null, this.input_name);
-          localStorage.setItem("player", this.player);
-        }
+      if (this.input_name.length) {
+        this.player = String.fromCharCode.apply(null, this.input_name);
+        localStorage.setItem("player", this.player);
       }
     }
   }
