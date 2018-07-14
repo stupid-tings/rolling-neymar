@@ -12,7 +12,7 @@ class Game extends Phaser.Scene {
     this.load.image("field", "assets/background/grass.png");
     this.load.audio('bgm', ['assets/sounds/bgm-theme.mp3'])
     this.load.audio('start-game' , ['assets/sounds/start-game.mp3'])
-    this.load.audio('ooh', ['assets/sounds/OOH.mp3'])
+    this.load.audio('ooh', ['assets/sounds/ooh.mp3'])
     this.load.spritesheet("neymar", "assets/sprites/neymar.png", {
       frameWidth: 90,
       frameHeight: 30
