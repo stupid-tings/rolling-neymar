@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy": "cp -R  assets public/assets && firebase deploy --only hosting",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
