@@ -1,3 +1,6 @@
+const WIDTH = window.outerWidth
+const HEIGHT = window.outerHeight
+
 class Game extends Phaser.Scene {
   constructor() {
     super({
@@ -42,7 +45,7 @@ class Game extends Phaser.Scene {
     this.score = 0;
     this.lives = 3;
     this.scoreBoard = this.add.text(0, 0, "SCORE: 0");
-    this.liveBoard = this.add.text(700, 0, "LIVES: 2");
+    this.liveBoard = this.add.text(0, 30, "LIVES: 2");
 
     // this.physics.add.sprite(300, 500, 'ball')
 
@@ -72,8 +75,8 @@ class Game extends Phaser.Scene {
         enemy.setVelocityY(Phaser.Math.RND.integerInRange(-1000, 1000));
         if (this.colliding) return;
         this.colliding = true;
-        // this.lives -= 1
-        this.liveBoard.setText(`LIVES: ${parseInt((this.lives -= 1))}`);
+        this.lives -= 1
+        this.liveBoard.setText(`LIVES: ${parseInt((this.lives))}`);
         if (this.lives <= 0) {
           clearInterval(this.interval);
           this.neymar.setVelocityY(0);
@@ -88,8 +91,8 @@ class Game extends Phaser.Scene {
       });
       return enemy;
     };
-    const x = 800; //Phaser.Math.RND.integerInRange(0, 800)
-    const y = Phaser.Math.RND.integerInRange(0, 600);
+    const x = WIDTH; //Phaser.Math.RND.integerInRange(0, 800)
+    const y = Phaser.Math.RND.integerInRange(0, HEIGHT);
     const cloneNeymar = Enemy(x, y, "ball");
     this.enamies.push(cloneNeymar);
   }
