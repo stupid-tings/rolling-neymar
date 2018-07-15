@@ -113,8 +113,12 @@ class Game extends Phaser.Scene {
 
     this.score = 0;
     this.lives = 3;
-    this.scoreBoard = this.add.text(0, 0, "SCORE: 0");
-    this.liveBoard = this.add.text(0, 30, "LIVES: 3");
+    this.scoreBoard = this.add.text(0, 0, "SCORE: 0", {
+      fontSize: 30,
+    });
+    this.liveBoard = this.add.text(0, 30, "LIVES: 3", {
+      fontSize: 30,
+    });
 
     // this.physics.add.sprite(300, 500, 'ball')
     this.interval = setInterval(() => {
