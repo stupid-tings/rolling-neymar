@@ -1,5 +1,5 @@
-const WIDTH = window.outerWidth
-const HEIGHT = window.outerHeight
+const WIDTH = window.innerWidth
+const HEIGHT = window.innerHeight
 
 class Game extends Phaser.Scene {
   constructor() {

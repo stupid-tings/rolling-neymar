@@ -10,8 +10,8 @@ class Over extends Phaser.Scene {
   }
 
   create() {
-    const centerX = window.outerWidth / 2;
-    const centerY = window.outerHeight / 2;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
     const scores = localStorage.getItem("scores");
     this.add.image(centerX, centerY, "over_bg");
     const string_text = `YOUR SCORE IS ${scores}`;

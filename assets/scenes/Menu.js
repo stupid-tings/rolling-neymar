@@ -15,8 +15,8 @@ class Menu extends Phaser.Scene {
 
   create() {
     localStorage.removeItem("player");
-    const width = window.outerWidth;
-    const height = window.outerHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     const player = localStorage.getItem("player");
     this.bg = this.add.image(width / 2, height / 2, "background");
     this.bg.setDisplaySize(this.sys.canvas.width, this.sys.canvas.height);
@@ -46,7 +46,7 @@ class Menu extends Phaser.Scene {
       this.input_name.length && this.player_name.destroy();
       this.input_name.pop();
       this.player_name = this.add.text(
-        window.outerWidth / 2 - 160,
+        window.innerWidth / 2 - 160,
         224,
         String.fromCharCode.apply(null, this.input_name),
         {
@@ -63,7 +63,7 @@ class Menu extends Phaser.Scene {
           this.input_name.length && this.player_name.destroy();
           this.input_name.push(i);
           this.player_name = this.add.text(
-            window.outerWidth / 2 - 160,
+            window.innerWidth / 2 - 160,
             224,
             String.fromCharCode.apply(null, this.input_name),
             {
@@ -82,7 +82,7 @@ class Menu extends Phaser.Scene {
           this.input_name.length && this.player_name.destroy();
           this.input_name.push(i);
           this.player_name = this.add.text(
-            window.outerWidth / 2 - 160,
+            window.innerWidth / 2 - 160,
             224,
             String.fromCharCode.apply(null, this.input_name),
             {
@@ -107,7 +107,7 @@ class Menu extends Phaser.Scene {
   }
 
   showName(player) {
-    const middle = window.outerWidth / 2 - 160;
+    const middle = window.innerWidth / 2 - 160;
     const createText = (text, posY) =>
       this.add.text(middle, 150 + posY * 25, text, {
         fontSize: 24,
