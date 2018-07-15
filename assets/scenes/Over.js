@@ -33,7 +33,12 @@ class Over extends Phaser.Scene {
     this.cry = this.sound.add("cry");
     this.cry.play();
     const player = localStorage.getItem("player");
-    dbRef.child(player).set(parseInt(scores));
+    dbRef.child(player).once("value", s => {
+      const score_int = parseInt(scres);
+      if (s.val() < score_int) {
+        s.ref.set(score_int);
+      }
+    });
     dbRef
       .orderByValue()
       .limitToLast(3)

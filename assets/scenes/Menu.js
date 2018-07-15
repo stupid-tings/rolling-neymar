@@ -84,7 +84,7 @@ class Menu extends Phaser.Scene {
           fontFamily: "Sans-serif"
         });
       if (s.exists()) {
-        const scoreText = `Your last score : ${s.val()}`;
+        const scoreText = `Your high score :: ${s.val()}`;
         createText(`Hello ${player}`, 1);
         createText(scoreText, 2);
         this.player = player;
