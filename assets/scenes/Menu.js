@@ -27,6 +27,7 @@ class Menu extends Phaser.Scene {
     this.showName(player);
     this.input_name = [];
     const button = this.add.sprite(width / 2, height - 100, "button");
+    button.setDisplaySize(250, 102)
     button.setInteractive();
     button.on("pointerdown", () => {
       if (!this.loading && this.player) {
