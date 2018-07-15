@@ -18,7 +18,8 @@ class Menu extends Phaser.Scene {
     const width = window.outerWidth;
     const height = window.outerHeight;
     const player = localStorage.getItem("player");
-    this.add.image(width / 2, height / 2, "background");
+    this.bg = this.add.image(width / 2, height / 2, "background");
+    this.bg.setDisplaySize(this.sys.canvas.width, this.sys.canvas.height);
     this.key_enter = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.ENTER
     );
@@ -95,7 +96,8 @@ class Menu extends Phaser.Scene {
     }
     if (this.key_enter.isDown) {
       if (this.input_name.length) {
-        // this.player = String.fromCharCode.apply(null, this.input_name);
+        this.player = String.fromCharCode.apply(null, this.input_name);
+        console.log(this.player)
         localStorage.setItem("player", this.player);
         // this.showName(this.player);
         this.loading = false;
@@ -112,7 +114,7 @@ class Menu extends Phaser.Scene {
         fontFamily: "Sans-serif"
       });
     if (!player) {
-      this.text1 = createText("You r new! Enter ya name!", 1);
+      this.text1 = createText("ENTER YOUR NAME!", 1);
       this.text2 = createText("_________________________", 3);
     } else {
       if (this.text1 || this.text2) {

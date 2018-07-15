@@ -43,6 +43,7 @@ class Game extends Phaser.Scene {
   }
 
   create() {
+    document.getElementById('rolling').style.display = 'none'
     this.field = this.add.tileSprite(0, 0, 10000, 10000, "field");
 
     this.cursors = this.input.keyboard.createCursorKeys();

@@ -6,7 +6,7 @@ class Over extends Phaser.Scene {
   }
   preload() {
     this.load.audio("cry", "assets/sounds/cry.mp3");
-    this.load.image("over_bg", "assets/background/over.jpg");
+    this.load.image("over_bg", "assets/background/over.png");
   }
 
   create() {
@@ -21,7 +21,7 @@ class Over extends Phaser.Scene {
     this.text = this.add.text(
       centerX - 300,
       50,
-      "Press Enter to bring Him home",
+      "PRESS ENTER TO ROLL HIM HOME",
       {
         fontSize: 36,
         fontFamily: "Sans-serif"
@@ -34,7 +34,7 @@ class Over extends Phaser.Scene {
     this.cry.play();
     const player = localStorage.getItem("player");
     dbRef.child(player).once("value", s => {
-      const score_int = parseInt(scres);
+      const score_int = parseInt(scores);
       if (s.val() < score_int) {
         s.ref.set(score_int);
       }
