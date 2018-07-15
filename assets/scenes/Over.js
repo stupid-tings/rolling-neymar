@@ -41,7 +41,7 @@ class Over extends Phaser.Scene {
     });
     dbRef
       .orderByValue()
-      .limitToLast(3)
+      .limitToLast(10)
       .once("value", s => {
         console.log(s.val());
         this.topThree = s.val();
