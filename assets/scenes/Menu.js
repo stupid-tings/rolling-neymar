@@ -39,8 +39,8 @@ class Menu extends Phaser.Scene {
       this.input_name.length && this.player_name.destroy();
       this.input_name.pop();
       this.player_name = this.add.text(
-        20,
-        250,
+        window.outerWidth / 2 - 160,
+        150,
         String.fromCharCode.apply(null, this.input_name),
         {
           fontSize: 24
@@ -55,8 +55,8 @@ class Menu extends Phaser.Scene {
           this.input_name.length && this.player_name.destroy();
           this.input_name.push(i);
           this.player_name = this.add.text(
-            20,
-            250,
+            window.outerWidth / 2 - 160,
+            150,
             String.fromCharCode.apply(null, this.input_name),
             {
               fontSize: 24
@@ -84,14 +84,14 @@ class Menu extends Phaser.Scene {
           fontFamily: "Sans-serif"
         });
       if (s.exists()) {
-        const scoreText = `Your last score : ${s.val()}`;
+        const scoreText = `Your high score :: ${s.val()}`;
         createText(`Hello ${player}`, 1);
         createText(scoreText, 2);
         this.player = player;
         this.loading = false;
       } else {
         createText("You r new! Enter ya name!", 1);
-        createText("_________________________", 2);
+        createText("_________________________", 3);
         // show input name
       }
     });
